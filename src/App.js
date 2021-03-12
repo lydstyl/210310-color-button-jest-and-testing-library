@@ -1,25 +1,37 @@
 import {useState} from 'react'
 
 function App() {
-  const [text, setText] = useState('Change to blue')
-  const [color, setColor] = useState('red')
-  const [isDesabled, setIsDesabled] = useState(false)
+  const [buttonTextColor, setButtonTextColor] = useState('blue')
+  const buttonText = `Change to ${buttonTextColor}`
 
-  function handleClick () {
-    if (color === 'red') {
-      setColor('blue')
-      setText('Change to red')
+  const [isDisabled, setIsDisabled] = useState(false)
+
+  const buttonColor = (() => {
+    if (isDisabled) {
+      return 'gray'
     } else {
-      setColor('red')
-      setText('Change to blue')
+      if (buttonText === 'Change to blue') {
+        return 'red'
+      } else {
+        return 'blue'
+      }
+    }
+  })()
+
+  function handleButtonClick () {
+    if (buttonTextColor === 'blue') {
+      setButtonTextColor('red')
+    } else {
+      setButtonTextColor('blue')
     }
   }
 
   return (
     <div>
-      <button disabled={isDesabled} onClick={handleClick } style={{backgroundColor: color}}>{text}</button>
+      <button disabled={isDisabled} onClick={ handleButtonClick } style={{backgroundColor: buttonColor}}>{buttonText}</button>
 
-     <input onClick={() => setIsDesabled(!isDesabled)} type="checkbox"/>
+    <label htmlFor="disable-button">Disable button</label>
+     <input onClick={() => setIsDisabled(!isDisabled)} type="checkbox" id="disable-button" />
     </div>
   );
 }
