@@ -5,8 +5,8 @@ export function replaceCamelWithSpaces(colorName) {
 }
 
 function App() {
-  const [buttonTextColor, setButtonTextColor] = useState('blue')
-  const buttonText = `Change to ${buttonTextColor}`
+  const [buttonTextColor, setButtonTextColor] = useState('MidnightBlue')
+  const buttonText = `Change to ${replaceCamelWithSpaces(buttonTextColor)}`
 
   const [isDisabled, setIsDisabled] = useState(false)
 
@@ -14,19 +14,19 @@ function App() {
     if (isDisabled) {
       return 'gray'
     } else {
-      if (buttonText === 'Change to blue') {
-        return 'red'
+      if (buttonText === 'Change to Midnight Blue') {
+        return 'MediumVioletRed'
       } else {
-        return 'blue'
+        return 'MidnightBlue'
       }
     }
   })()
 
   function handleButtonClick () {
-    if (buttonTextColor === 'blue') {
-      setButtonTextColor('red')
+    if (buttonTextColor === 'MidnightBlue') {
+      setButtonTextColor('MediumVioletRed')
     } else {
-      setButtonTextColor('blue')
+      setButtonTextColor('MidnightBlue')
     }
   }
 
