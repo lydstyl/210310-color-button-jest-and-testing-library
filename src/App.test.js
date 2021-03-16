@@ -34,7 +34,7 @@ it('checkbox disables color button on first click and enables on second', ()=>{
   const checkBox = screen.getByRole('checkbox', {name: /disable button/i})
 
   fireEvent.click(checkBox)
-  expect(colorButton).not.toBeEnabled()
+  expect(colorButton).toBeDisabled()
 
   fireEvent.click(checkBox)
   expect(colorButton).toBeEnabled()
@@ -66,8 +66,9 @@ describe('spaces before camel-case capital letters', () => {
   it('works for one inner capital letters', () => {
     expect(replaceCamelWithSpaces('MidnightBlue')).toBe('Midnight Blue')
   })
-  it('works for multiple inner capital letters', ()=>{
+  it('works for multiple inner capital letters', _ =>{
     expect(replaceCamelWithSpaces('MediumVioletRed')).toBe('Medium Violet Red')
+    _()
   })
 })
 
